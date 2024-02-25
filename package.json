@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "snowbeam",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "homepage": "https://github.com/snowbeam/snowbeam.git",
+  "description": "📦 This CLI Application will help in number of tasks and operations.",
+  "scripts": {
+    "preinstall": "npx only-allow yarn",
+    "build": "shx rm -rf dist && tsc -b",
+    "lint": "eslint . --ext .ts",
+    "postpack": "shx rm -f oclif.manifest.json",
+    "posttest": "yarn run lint",
+    "prepack": "yarn build && oclif manifest && oclif readme",
+    "compile": "run-script-os",
+    "compile:windows": "oclif pack win && oclif manifest && oclif readme",
+    "prepare": "yarn build",
+    "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif readme && git add README.md"
+  },
+  "keywords": [
+    "snowbeam",
+    "oclif",
+    "typescript",
+    "prettier",
+    "eslint"
+  ],
+  "author": "Md Irshad",
+  "bugs": {
+    "url": "https://github.com/snowbeam/snowbeam/issues",
+    "email": "mdirshaddev+snowbeam@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snowbeam/snowbeam.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@oclif/core": "^3",
+    "@oclif/plugin-help": "^6",
+    "@oclif/plugin-plugins": "^4",
+    "run-script-os": "^1.1.6"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@oclif/prettier-config": "^0.2.1",
+    "@oclif/test": "^3",
+    "@types/chai": "^4",
+    "@types/mocha": "^10",
+    "@types/node": "^18",
+    "chai": "^4",
+    "eslint": "^8",
+    "eslint-config-oclif": "^5",
+    "eslint-config-oclif-typescript": "^3",
+    "eslint-config-prettier": "^9.1.0",
+    "mocha": "^10",
+    "oclif": "^4.4.12",
+    "shx": "^0.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.10",
+    "yarn": ">=1.22"
+  },
+  "types": "dist/index.d.ts",
+  "exports": "./lib/index.js",
+  "files": [
+    "/bin",
+    "/dist",
+    "/oclif.manifest.json"
+  ],
+  "bin": {
+    "snowbeam": "./bin/run.js"
+  },
+  "oclif": {
+    "bin": "snowbeam",
+    "windows": {
+      "name": "Snowbeam CLI"
+    },
+    "dirname": "snowbeam",
+    "commands": "./dist/commands",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-plugins"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "hello": {
+        "description": "Say hello to the world and others"
+      }
+    }
+  }
+}

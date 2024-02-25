@@ -1,0 +1,36 @@
+# Dependency directories
+node_modules
+
+# Package manager logs
+yarn*.log
+
+# TypeScript compilation artifacts
+*.tsbuildinfo
+
+# Build output directories
+dist
+
+# Editor-specific files
+.vscode
+.idea
+*.sublime*
+
+# Version control system files
+.git
+.svn
+.hg
+CVS
+
+# Operating system files
+Thumbs.db
+.DS_Store
+
+# Environment-specific files
+.env
+.env.local
+
+# Test and documentation files
+__tests__
+tests
+coverage
+docs
