@@ -1,4 +1,4 @@
-# @snowbeam/cli
+# snowbeam
 
 This is a CLI application for snowbeam *Right now it's in planned state*
 

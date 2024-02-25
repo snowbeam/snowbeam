@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/package",
-  "name": "@snowbeam/cli",
+  "name": "snowbeam",
   "version": "0.0.0",
   "private": false,
   "type": "module",
-  "homepage": "https://github.com/snowbeam/cli.git",
+  "homepage": "https://github.com/snowbeam/snowbeam.git",
   "description": "📦 This CLI Application will help in number of tasks and operations.",
   "scripts": {
     "preinstall": "npx only-allow yarn",
@@ -12,10 +12,10 @@
     "lint": "eslint . --ext .ts",
     "postpack": "shx rm -f oclif.manifest.json",
     "posttest": "yarn run lint",
-    "prepack": "yarn run build && oclif manifest && oclif readme",
+    "prepack": "yarn build && oclif manifest && oclif readme",
     "compile": "run-script-os",
-    "compile:windows": "oclif pack win",
-    "prepare": "yarn run build",
+    "compile:windows": "oclif pack win && oclif manifest && oclif readme",
+    "prepare": "yarn build",
     "test": "mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif readme && git add README.md"
   },
@@ -26,18 +26,14 @@
     "prettier",
     "eslint"
   ],
-  "author": {
-    "name": "Md Irshad",
-    "email": "mdirshaddev@gmail.com",
-    "url": "https://mdirshad.vercel.app"
-  },
+  "author": "Md Irshad",
   "bugs": {
-    "url": "https://github.com/snowbeam/cli/issues",
+    "url": "https://github.com/snowbeam/snowbeam/issues",
     "email": "mdirshaddev+snowbeam@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/snowbeam/cli.git"
+    "url": "git+https://github.com/snowbeam/snowbeam.git"
   },
   "license": "MIT",
   "dependencies": {
@@ -59,7 +55,7 @@
     "eslint-config-oclif-typescript": "^3",
     "eslint-config-prettier": "^9.1.0",
     "mocha": "^10",
-    "oclif": "^4.4.2",
+    "oclif": "^4.4.12",
     "shx": "^0.3.4",
     "ts-node": "^10.9.2",
     "typescript": "^5"
@@ -68,8 +64,6 @@
     "node": ">=18.10",
     "yarn": ">=1.22"
   },
-  "packageManager": "yarn@1.22.0",
-  "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "exports": "./lib/index.js",
   "files": [
@@ -82,6 +76,9 @@
   },
   "oclif": {
     "bin": "snowbeam",
+    "windows": {
+      "name": "Snowbeam CLI"
+    },
     "dirname": "snowbeam",
     "commands": "./dist/commands",
     "plugins": [
